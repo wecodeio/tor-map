@@ -63,5 +63,6 @@ DEPENDENCIES
   geoip-c
   pg
   puma
+  rake
   rerun
   sequel

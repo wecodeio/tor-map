@@ -8,4 +8,9 @@ gem "cuhaml-contrib"
 gem "puma"
 gem "dotenv"
 
-gem "rerun", group: :development
+group :development do
+  gem "rerun"
+  gem "capistrano", "~> 3.0.0"
+  gem "capistrano-bundler"
+  gem "capistrano-rails", "~> 1.1.0"
+end

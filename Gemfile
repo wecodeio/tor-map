@@ -7,6 +7,7 @@ gem "cuba"
 gem "cuhaml-contrib"
 gem "puma"
 gem "dotenv"
+gem "whenever", github: "javan/whenever"
 
 group :development do
   gem "rerun"

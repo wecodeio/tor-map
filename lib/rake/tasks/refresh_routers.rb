@@ -1,8 +1,8 @@
 require "open-uri"
 require "csv"
 
-require_relative "../models/router"
-require_relative "../lib/ip_geocoder"
+require File.expand_path("models/router")
+require File.expand_path("lib/ip_geocoder")
 
 class RefreshRouters
   def self.execute
@@ -14,6 +14,8 @@ class RefreshRouters
         f.write(open("http://torstatus.blutmagie.de/query_export.php/#{csv_filename}").read)
       end
     end
+
+    return unless CSV.read(csv_file).length > 1
 
     Router.dataset.delete
 

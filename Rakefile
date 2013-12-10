@@ -1,7 +1,7 @@
 require "rake/testtask"
 
 require_relative "config/initializers/sequel"
-require_relative "tasks/refresh_routers"
+require_relative "lib/rake/tasks/refresh_routers"
 
 Rake::TestTask.new do |t|
   t.pattern = "spec/[^integration]*/*_spec.rb"

@@ -1,0 +1,9 @@
+development:
+  url: postgres://tor:secret@localhost/tor_map_development
+
+test:
+  url: postgres://tor:secret@localhost/tor_map_test
+
+production:
+  url: postgres://tor:secret@localhost/tor_map_production
+  max_connections: 25

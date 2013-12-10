@@ -1,0 +1,13 @@
+!!!5
+%html
+  %head
+    %meta{ name: "viewport", content: "initial-scale=1.0, user-scalable=no" }
+    %link{ href: "/images/favicon.ico", rel: "icon", type: "image/x-icon" }
+    :css
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100% }
+    %script{ src: "//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" }
+    - yield_for :js
+
+  %body= content

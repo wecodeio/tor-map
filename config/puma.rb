@@ -122,6 +122,6 @@ bind 'unix://tmp/puma/puma.sock'
 # Check out https://github.com/puma/puma/blob/master/lib/puma/app/status.rb
 # to see what the app has available.
 #
-activate_control_app 'unix://tmp/puma/pumactl.sock'
+activate_control_app 'unix:///var/www/tor-map/shared/tmp/puma/pumactl.sock'
 # activate_control_app 'unix:///var/run/pumactl.sock', { auth_token: '12345' }
 # activate_control_app 'unix:///var/run/pumactl.sock', { no_token: true }

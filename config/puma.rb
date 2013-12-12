@@ -38,12 +38,12 @@ daemonize
 
 # Store the pid of the server in the file at “path”.
 #
-pidfile 'tmp/puma/puma.pid'
+pidfile 'tmp/puma/pid'
 
 # Use “path” as the file to store the server info state. This is
 # used by “pumactl” to query and control the server.
 #
-state_path 'tmp/puma/puma.state'
+state_path 'tmp/puma/state'
 
 # Redirect STDOUT and STDERR to files specified. The 3rd parameter
 # (“append”) specifies whether the output is appended, the default is

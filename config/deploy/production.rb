@@ -8,6 +8,6 @@ server 'tor-map.crasch.com.ar', user: 'cristian', roles: %w{app db}
 # set it globally
 set :ssh_options, { forward_agent: true }
 
-set :linked_dirs, %w{tmp/puma log }
+set :linked_dirs, %w{tmp log}
 
 fetch(:default_env).merge!(rack_env: :production)

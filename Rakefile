@@ -2,6 +2,7 @@ require "rake/testtask"
 
 require_relative "config/initializers/sequel"
 require_relative "lib/rake/tasks/refresh_routers"
+require_relative "lib/rake/tasks/set_routers_contact_info"
 
 Rake::TestTask.new do |t|
   t.pattern = "spec/[^integration]*/*_spec.rb"
@@ -70,6 +71,11 @@ namespace :routers do
   desc "Refresh data on routers (source: torstatus.blutmagie.de)"
   task :refresh do
     RefreshRouters.execute
+  end
+
+  desc "Pull routers contact info from https://www.dan.me.uk/tornodes"
+  task :set_contact_info do
+    SetRoutersContactInfo.execute
   end
 end
 

@@ -71,6 +71,9 @@
       if (router.platform) {
         content.push('Platform: ' + router.platform);
       }
+      if (router.contact_info) {
+        content.push('Contact info: ' + router.contact_info);
+      }
       var lis = $.map(content, function(li) { return '<li>' + li + '</li>'; });
       return '<ul>' + lis.join('') + '</ul>';
     }

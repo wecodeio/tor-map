@@ -2,7 +2,7 @@ require "sequel"
 require "pathname"
 require "yaml"
 
-rack_env = ENV["RACK_ENV"] || "development"
+rack_env = ENV["RACK_ENV"] || ENV["RAILS_ENV"] || "development"
 db_config = YAML::load(Pathname.new("config/database.yml").open)
 env_config = db_config[rack_env]
 

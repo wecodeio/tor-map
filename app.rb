@@ -25,6 +25,7 @@ Cuba.define do
     on "routers", param("latitude"), param("longitude") do |lat, long|
       latitude, longitude = BigDecimal.new(lat), BigDecimal.new(long)
       routers = FindNearbyRouters.execute(latitude, longitude)
+      p routers.length
       routers.map! { |router| RouterPresenter.to_h(router) }
       res.write JSON.generate(routers)
     end

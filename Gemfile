@@ -2,7 +2,6 @@ source "https://rubygems.org"
 
 gem "pg"
 gem "sequel"
-gem "geoip-c"
 gem "cuba"
 gem "cuhaml-contrib"
 gem "puma"

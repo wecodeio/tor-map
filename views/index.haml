@@ -20,15 +20,14 @@
               var marker = new google.maps.Marker({
                   position: new google.maps.LatLng(this.latitude, this.longitude),
                   title: this.name + ' (' + formatDistance(this.distance) + ')',
-                  icon: '/images/tor.png'
+                  icon: '/images/tor.png',
+                  map: map
               });
 
               var infoWindow = new google.maps.InfoWindow({ content: infoWindowContentFor(this) });
               google.maps.event.addListener(marker, 'click', function() {
                 infoWindow.open(map, marker);
               });
-
-              marker.setMap(map);
             });
           });
         };

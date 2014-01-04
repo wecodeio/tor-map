@@ -1,31 +1,17 @@
-require "geoip"
+require "open-uri"
+require "json"
 
 class IPGeocoder
-  class << self
-    attr_reader :db
-
-    def bootstrap
-      home_dir = ENV["HOME"]
-      dat_file = File.join(home_dir, "GeoLiteCity.dat")
-      unless File.exists?(dat_file) && File.ctime(dat_file) > Time.now - 60*60*24
-        %x(wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz --directory-prefix=#{home_dir} && gunzip --force #{home_dir}/GeoLiteCity.dat.gz)
-      end
-
-      @db = GeoIP::City.new(dat_file, :filesystem)
-    end
-  end
-  bootstrap
-
   def initialize(ip_address)
     @ip_address = ip_address
   end
 
   def latitude
-    @latitude ||= result[:latitude]
+    @latitude ||= response["latitude"]
   end
 
   def longitude
-    @longitude ||= result[:longitude]
+    @longitude ||= response["longitude"]
   end
 
   def success?
@@ -34,7 +20,14 @@ class IPGeocoder
 
 private
 
-  def result
-    @result ||= self.class.db.look_up(@ip_address) || {}
+  # {"ip":"186.22.185.197","country_code":"AR","country_name":"Argentina","region_code":"07",
+  #  "region_name":"Distrito Federal","city":"Buenos Aires","zipcode":"",
+  #  "latitude":-34.5875,"longitude":-58.6725,"metro_code":"","areacode":""}
+  def response
+    @response ||= begin
+                    JSON.parse(open("http://freegeoip.net/json/#{@ip_address}").read)
+                  rescue OpenURI::HTTPError
+                    {}
+                  end
   end
 end
